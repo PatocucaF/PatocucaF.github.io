@@ -33,8 +33,8 @@
 Si quieres colaborar en algún proyecto o conectar conmigo, me puedes encontrar en:
 
 * 🐙 **GitHub:** [@PatocucaF](https://github.com/PatocucaF)
-* 💼 **LinkedIn:** [Mi Perfil de LinkedIn](#) *(Agrega tu link aquí)*
-* ✉️ **Correo:** *tu-email@correo.com*
+* 💼 **LinkedIn:** (https://www.linkedin.com/in/fernando-valenzuela-233768362/)
+* ✉️ **Correo:** fernandot33v@gmail.com
 
 ---
 *Desarrollado por Fernando Y. Valenzuela*

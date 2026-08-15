@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> Portafolio| Fernando Y Valenzuela</title>
+    
+    
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --bg-color: #f8fafc;
+            --text-color: #0f172a;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+       
+        section {
+            padding: 5rem 1rem 3rem 1rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-size: 2rem;
+        }
+
+        
+        #inicio {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            text-align: center;
+        }
+
+        .hero-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        /*  (Proyectos y Habilidades) */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* Formulario de Contacto */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        input, textarea {
+            padding: 0.8rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <header>
+        <nav>
+            <div class="logo">
+                <strong>[F.V]</strong>
+            </div>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+    <section id="inicio">
+        
+        <img src="./assets/images/feña.jpg" alt="Foto de perfil" class="hero-img">
+        <h1>¡Hola! Soy <span style="color: var(--primary-color);">[Fernando]</span></h1>
+        <p>[Ingenieria en informatica / Automatización / Desarrollador Web / Estudiante]</p>
+        <a href="#contacto" class="btn">Contáctame</a>
+    </section>
+
+
+    <section id="sobre-mi">
+        <h2 class="title">Sobre Mí</h2>
+        <div class="card">
+            <p>
+                Hola! Soy un estudiante de segundo año al cual le apasiona todo el mundo de la cyberseguridad y desarrollo web, Me encanta el trabajo en equipo y resolver problema.   
+            </p>
+        </div>
+    </section>
+
+
+    <section id="proyectos">
+        <h2 class="title">Mis Proyectos</h2>
+        <div class="grid">
+            
+            <!-- Proyecto 1 -->
+            <div class="card">
+                <h3>[Simulacion Juegos Olimpicos]</h3>
+                <p>Realiza una simulacion de la competencia que uno de see realizar con resultados aleatorios </p>
+                <a href="#" target="_blank">Ver Proyecto &rarr;</a>
+            </div>
+
+            <!-- Proyecto 2 -->
+            <div class="card">
+                <h3>Automatización de ventas de negocio</h3>
+                <p>Creación de un sistema automatizado para gestionar y procesar ventas en el negocio de venta de auto partes.</p>
+                <a href="#" target="_blank">Ver Proyecto &rarr;</a>
+            </div>
+
+            <!-- Proyecto 3 -->
+            <div class="card">
+                <h3>Desarrollo de una app para organizar las rutinas (ToDoList)</h3>
+                <p>Creación de una aplicación móvil para gestionar tareas diarias y organizar la productividad.</p>
+                <a href="#" target="_blank">Ver Proyecto &rarr;</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN: HABILIDADES -->
+    <section id="habilidades">
+        <h2 class="title">Habilidades</h2>
+        <div class="grid">
+            
+            <div class="card">
+                <h3>Habilidades Técnicas</h3>
+                <ul>
+                    <li>HTML5 / CSS3</li>
+                    <li>JavaScript</li>
+                    <li>[Python / SQL]</li>
+                    <li>[Git / GitHub]</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Habilidades Blandas</h3>
+                <ul>
+                    <li>Trabajo en equipo</li>
+                    <li>Resolución de problemas</li>
+                    <li>Comunicación efectiva</li>
+                    <li>Gestión del tiempo</li>
+                    <li>Adaptabilidad</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN: CONTACTO -->
+    <section id="contacto">
+        <h2 class="title">Contacto</h2>
+        <form action="#" method="POST">
+            <input type="text" placeholder="Tu Nombre" required>
+            <input type="email" placeholder="Tu Correo Electrónico" required>
+            <textarea rows="5" placeholder="Tu Mensaje..." required></textarea>
+            <button type="submit" class="btn">Enviar Mensaje</button>
+        </form>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>&copy; 2026 [Tu Nombre]. Todos los derechos reservados.</p>
+        <div>
+            <!-- Cambia el # por los enlaces reales a tus redes -->
+            <a href="#">LinkedIn</a> | 
+            <a href="#">GitHub</a> | 
+            <a href="#">Twitter/X</a>
+        </div>
+    </footer>
+
+</body>
+</html>

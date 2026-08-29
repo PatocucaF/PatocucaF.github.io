@@ -3,16 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title> Portafolio| Fernando Y Valenzuela</title>
-    
+    <title>Portafolio | Fernando Valenzuela</title>
     
     <style>
+        
         :root {
             --primary-color: #2563eb;
             --bg-color: #f8fafc;
             --text-color: #0f172a;
             --card-bg: #ffffff;
+            --border-color: #cbd5e1;
+            --header-bg: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Variables para el Modo Oscuro */
+        body.dark-mode {
+            --primary-color: #60a5fa;
+            --bg-color: #0f172a;
+            --text-color: #f8fafc;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --header-bg: #1e293b;
+            --shadow: rgba(0, 0, 0, 0.4);
         }
 
         body {
@@ -22,16 +35,18 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         
         header {
-            background-color: var(--card-bg);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            background-color: var(--header-bg);
+            box-shadow: 0 1px 3px var(--shadow);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 100;
+            transition: background-color 0.3s ease;
         }
 
         nav {
@@ -43,7 +58,13 @@
             align-items: center;
         }
 
-        nav ul {
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-links {
             display: flex;
             list-style: none;
             gap: 1.5rem;
@@ -62,7 +83,44 @@
             color: var(--primary-color);
         }
 
-       
+        
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            font-size: 1.2rem;
+            padding: 0.4rem 0.7rem;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary-color);
+        }
+
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        
         section {
             padding: 5rem 1rem 3rem 1rem;
             max-width: 1100px;
@@ -75,7 +133,6 @@
             font-size: 2rem;
         }
 
-        
         #inicio {
             display: flex;
             flex-direction: column;
@@ -104,7 +161,7 @@
             margin-top: 1rem;
         }
 
-        /*  (Proyectos y Habilidades) */
+        
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -115,10 +172,12 @@
             background-color: var(--card-bg);
             padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
-        /* Formulario de Contacto */
+        
         form {
             display: flex;
             flex-direction: column;
@@ -129,98 +188,131 @@
 
         input, textarea {
             padding: 0.8rem;
-            border: 1px solid #cbd5e1;
+            border: 1px solid var(--border-color);
             border-radius: 6px;
             font-size: 1rem;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        
         footer {
             text-align: center;
             padding: 2rem;
-            background-color: var(--card-bg);
+            background-color: var(--header-bg);
             margin-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            transition: background-color 0.3s ease;
+        }
+
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--header-bg);
+                flex-direction: column;
+                align-items: center;
+                padding: 1.5rem 0;
+                gap: 1.5rem;
+                box-shadow: 0 4px 6px var(--shadow);
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
         }
     </style>
 </head>
 <body>
 
-    
     <header>
         <nav>
             <div class="logo">
                 <strong>[F.V]</strong>
             </div>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#sobre-mi">Sobre Mí</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#habilidades">Habilidades</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+
+            <div class="nav-right">
+                
+                <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+                    <span id="theme-icon">Modo oscuro/claro</span>
+                </button>
+
+                
+                <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#inicio" class="nav-item">Inicio</a></li>
+                <li><a href="#sobre-mi" class="nav-item">Sobre Mí</a></li>
+                <li><a href="#proyectos" class="nav-item">Proyectos</a></li>
+                <li><a href="#habilidades" class="nav-item">Habilidades</a></li>
+                <li><a href="#contacto" class="nav-item">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
-    
     <section id="inicio">
-        
         <img src="./assets/images/feña.jpg" alt="Foto de perfil" class="hero-img">
-        <h1>¡Hola! Soy <span style="color: var(--primary-color);">[Fernando]</span></h1>
-        <p>[Ingenieria en informatica / Automatización / Desarrollador Web / Estudiante]</p>
+        <h1>¡Hola! Soy <span style="color: var(--primary-color);">Fernando</span></h1>
+        <p>Ingeniería en Informática | Ciberseguridad | Automatización | Dev Web</p>
         <a href="#contacto" class="btn">Contáctame</a>
     </section>
-
 
     <section id="sobre-mi">
         <h2 class="title">Sobre Mí</h2>
         <div class="card">
             <p>
-                Hola! Soy un estudiante de segundo año al cual le apasiona todo el mundo de la cyberseguridad y desarrollo web, Me encanta el trabajo en equipo y resolver problema.   
+                ¡Hola! Soy un estudiante de segundo año al cual le apasiona todo el mundo de la ciberseguridad y el desarrollo web. Me encanta el trabajo en equipo y resolver problemas.   
             </p>
         </div>
     </section>
 
-
     <section id="proyectos">
         <h2 class="title">Mis Proyectos</h2>
         <div class="grid">
-            
-            <!-- Proyecto 1 -->
             <div class="card">
-                <h3>[Simulacion Juegos Olimpicos]</h3>
-                <p>Realiza una simulacion de la competencia que uno de see realizar con resultados aleatorios </p>
+                <h3>Simulación Juegos Olímpicos</h3>
+                <p>Realiza una simulación de la competencia que uno desee realizar con resultados aleatorios.</p>
                 <a href="#" target="_blank">Ver Proyecto &rarr;</a>
             </div>
 
-            <!-- Proyecto 2 -->
             <div class="card">
                 <h3>Automatización de ventas de negocio</h3>
-                <p>Creación de un sistema automatizado para gestionar y procesar ventas en el negocio de venta de auto partes.</p>
+                <p>Creación de un sistema automatizado para gestionar y procesar ventas en el negocio de venta de autopartes.</p>
                 <a href="#" target="_blank">Ver Proyecto &rarr;</a>
             </div>
 
-            <!-- Proyecto 3 -->
             <div class="card">
-                <h3>Desarrollo de una app para organizar las rutinas (ToDoList)</h3>
-                <p>Creación de una aplicación móvil para gestionar tareas diarias y organizar la productividad.</p>
+                <h3>Desarrollo de App ToDoList</h3>
+                <p>Creación de una aplicación para gestionar tareas diarias y organizar la productividad.</p>
                 <a href="#" target="_blank">Ver Proyecto &rarr;</a>
             </div>
-
         </div>
     </section>
 
-    <!-- SECCIÓN: HABILIDADES -->
     <section id="habilidades">
         <h2 class="title">Habilidades</h2>
         <div class="grid">
-            
             <div class="card">
                 <h3>Habilidades Técnicas</h3>
                 <ul>
                     <li>HTML5 / CSS3</li>
                     <li>JavaScript</li>
-                    <li>[Python / SQL]</li>
-                    <li>[Git / GitHub]</li>
+                    <li>Python / SQL</li>
+                    <li>Git / GitHub</li>
                 </ul>
             </div>
 
@@ -234,11 +326,9 @@
                     <li>Adaptabilidad</li>
                 </ul>
             </div>
-
         </div>
     </section>
 
-    <!-- SECCIÓN: CONTACTO -->
     <section id="contacto">
         <h2 class="title">Contacto</h2>
         <form action="#" method="POST">
@@ -249,16 +339,53 @@
         </form>
     </section>
 
-    <!-- PIE DE PÁGINA -->
     <footer>
-        <p>&copy; 2026. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Fernando Valenzuela. Todos los derechos reservados.</p>
         <div>
-            <!-- Cambia el # por los enlaces reales a tus redes -->
             <a href="#">LinkedIn</a> | 
-            <a href="#">GitHub</a> | 
-            <a href="#">Twitter/X</a>
+            <a href="https://github.com/PatocucaF" target="_blank">GitHub</a>
         </div>
     </footer>
 
+
+    <script>
+        
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // --- 2. Modo Oscuro / Modo Claro ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        // Cargar preferencia guardada
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.textContent = '☀️';
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
 </body>
 </html>
